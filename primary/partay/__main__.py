@@ -1,4 +1,7 @@
+import sys
+
 from . import Partay
 
 
-Partay().run()
+api_key = sys.argv[1]
+Partay(api_key).run()
