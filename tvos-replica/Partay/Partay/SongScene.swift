@@ -15,7 +15,7 @@ class SongScene: SKScene {
 
         if let lyrics = song.lyrics {
             let lines = lyrics.components(separatedBy: .newlines)
-            let totalHeight = lines.count * gap + 500
+            let totalHeight = lines.count * gap + 1000
 
             var y = 0
             for line in lyrics.components(separatedBy: .newlines) {

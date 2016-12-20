@@ -18,3 +18,8 @@ recommend using [Soundflower](https://github.com/mattingalls/Soundflower) to
 loop your audio output back as input to avoid outside noise when controlling
 the lights. Finally, you run the [primary application](primary) on that
 machine, press play, and start the party.
+
+## Features
+
+- Any Phillips Hue lights will change in time to the music.
+- Lyrics for the current song will be shown on your Apple TV.
