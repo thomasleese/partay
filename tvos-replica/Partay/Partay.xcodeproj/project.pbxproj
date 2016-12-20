@@ -19,6 +19,8 @@
 		5DF516C01E09BFAA00E298FE /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF516BF1E09BFAA00E298FE /* Song.swift */; };
 		5DF516C21E09C2A200E298FE /* SongScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 5DF516C11E09C2A200E298FE /* SongScene.sks */; };
 		5DF516C41E09C2C800E298FE /* SongScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF516C31E09C2C800E298FE /* SongScene.swift */; };
+		5DF516C51E09D1B700E298FE /* Socket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DF516B51E09BB3C00E298FE /* Socket.framework */; };
+		5DF516C61E09D1B700E298FE /* Socket.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5DF516B51E09BB3C00E298FE /* Socket.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,7 +59,28 @@
 			remoteGlobalIDString = 8CA9B1631C98A00400E607FB;
 			remoteInfo = SocketTests;
 		};
+		5DF516C71E09D1B700E298FE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5DF516AE1E09BB3C00E298FE /* BlueSocket.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 8C0F4BF51C4E84CC008B2B0A;
+			remoteInfo = Socket;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		5DF516C91E09D1B700E298FE /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				5DF516C61E09D1B700E298FE /* Socket.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		5DDEB1731E09A7A4000A7E47 /* Partay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Partay.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -87,6 +110,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5DF516BC1E09BBBD00E298FE /* Socket.framework in Frameworks */,
+				5DF516C51E09D1B700E298FE /* Socket.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -184,10 +208,12 @@
 				5DDEB16F1E09A7A4000A7E47 /* Sources */,
 				5DDEB1701E09A7A4000A7E47 /* Frameworks */,
 				5DDEB1711E09A7A4000A7E47 /* Resources */,
+				5DF516C91E09D1B700E298FE /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				5DF516C81E09D1B700E298FE /* PBXTargetDependency */,
 			);
 			name = Partay;
 			productName = Partay;
@@ -379,6 +405,11 @@
 			target = 5DDEB1721E09A7A4000A7E47 /* Partay */;
 			targetProxy = 5DDEB1981E09A7A4000A7E47 /* PBXContainerItemProxy */;
 		};
+		5DF516C81E09D1B700E298FE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Socket;
+			targetProxy = 5DF516C71E09D1B700E298FE /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -487,6 +518,7 @@
 		5DDEB1A11E09A7A4000A7E47 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = R6UQ555W54;
@@ -502,6 +534,7 @@
 		5DDEB1A21E09A7A4000A7E47 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = R6UQ555W54;

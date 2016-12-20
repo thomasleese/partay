@@ -11,14 +11,13 @@ import SpriteKit
 class SongScene: SKScene {
 
     func loadSong(_ song: Song) {
-        let margin = 60
-        let gap = 30
+        let gap = 72
 
         if let lyrics = song.lyrics {
             let lines = lyrics.components(separatedBy: .newlines)
-            let totalHeight = margin + margin + lines.count * gap
+            let totalHeight = lines.count * gap + 500
 
-            var y = -margin
+            var y = 0
             for line in lyrics.components(separatedBy: .newlines) {
                 y -= gap
                 createLine(line, y, y + totalHeight, Float(song.duration) / 1000.0)
@@ -32,7 +31,8 @@ class SongScene: SKScene {
     func createLine(_ line: String, _ y: Int, _ targetY: Int, _ duration: Float) {
         let node = SKLabelNode(text: line)
         node.position = CGPoint(x: 0, y: y)
-        node.fontSize = 18
+        node.fontSize = 56
+        node.fontName = "Helvetica Neue Thin"
         addChild(node)
 
         let moveNodeUp = SKAction.moveBy(x: 0.0,
