@@ -19,7 +19,6 @@
 		5DF516C01E09BFAA00E298FE /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF516BF1E09BFAA00E298FE /* Song.swift */; };
 		5DF516C21E09C2A200E298FE /* SongScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 5DF516C11E09C2A200E298FE /* SongScene.sks */; };
 		5DF516C41E09C2C800E298FE /* SongScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF516C31E09C2C800E298FE /* SongScene.swift */; };
-		5DF516C51E09D1B700E298FE /* Socket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DF516B51E09BB3C00E298FE /* Socket.framework */; };
 		5DF516C61E09D1B700E298FE /* Socket.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5DF516B51E09BB3C00E298FE /* Socket.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
@@ -110,7 +109,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5DF516BC1E09BBBD00E298FE /* Socket.framework in Frameworks */,
-				5DF516C51E09D1B700E298FE /* Socket.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

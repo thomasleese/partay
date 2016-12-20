@@ -12,11 +12,11 @@ class SongScene: SKScene {
 
     func loadSong(_ song: Song) {
         let gap = 72
-        let duration = Float(song.duration) / 1000.0
+        let duration = Float(song.duration) / 1000.0 - 1 // song started
 
         if let lyrics = song.lyrics {
             let lines = lyrics.components(separatedBy: .newlines)
-            let totalHeight = lines.count * gap + 1500
+            let totalHeight = lines.count * gap
 
             var y = 0
             for line in lyrics.components(separatedBy: .newlines) {

@@ -46,7 +46,7 @@ class ViewController: UIViewController {
     func songChanged(_ song: Song) {
         print("Song changed to: " + song.title)
 
-        let transition = SKTransition.crossFade(withDuration: 1)
+        let transition = SKTransition.crossFade(withDuration: 2)
 
         let scene = SongScene(fileNamed: "SongScene")!
         scene.scaleMode = .aspectFill
@@ -68,9 +68,6 @@ class ViewController: UIViewController {
             view.presentScene(scene)
             
             view.ignoresSiblingOrder = true
-            
-            view.showsFPS = true
-            view.showsNodeCount = true
         }
     }
 
