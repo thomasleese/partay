@@ -12,15 +12,16 @@ class SongScene: SKScene {
 
     func loadSong(_ song: Song) {
         let gap = 72
+        let duration = Float(song.duration) / 1000.0
 
         if let lyrics = song.lyrics {
             let lines = lyrics.components(separatedBy: .newlines)
-            let totalHeight = lines.count * gap + 1000
+            let totalHeight = lines.count * gap + 1500
 
             var y = 0
             for line in lyrics.components(separatedBy: .newlines) {
                 y -= gap
-                createLine(line, y, y + totalHeight, Float(song.duration) / 1000.0)
+                createLine(line, y, y + totalHeight, duration)
             }
 
 
