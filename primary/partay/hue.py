@@ -25,7 +25,10 @@ class Light(BaseLight):
 
         url = self.api_url + '/lights/{}'.format(self.id) + '/state'
 
-        res = requests.put(url, json=payload)
+        try:
+            res = requests.put(url, json=payload)
+        except requests.exceptions.ConnectionError:
+            pass
 
 
 class Hub:
