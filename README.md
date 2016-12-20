@@ -23,3 +23,13 @@ machine, press play, and start the party.
 
 - Any Phillips Hue lights will change in time to the music.
 - Lyrics for the current song will be shown on your Apple TV.
+
+## Detailed Instructions
+
+1. Install [Xcode](https://developer.apple.com/xcode/) and
+[Homebrew][http://brew.sh] on your target computer.
+2. Clone this repository to a location on your computer.
+3. In the `primary` directory, run `pyvenv venv` and then `venv/bin/pip install -r requirements.txt`.
+4. Sign up for [Genius](https://genius.com) and get an API key.
+5. [Get an API key for your Phillips Hue lights](https://developers.meethue.com/documentation/getting-started).
+6. Run `venv/bin/python -m partay <GENIUS> <HUE>`

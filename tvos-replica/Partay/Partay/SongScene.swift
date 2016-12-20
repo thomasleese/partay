@@ -32,7 +32,7 @@ class SongScene: SKScene {
     func createLine(_ line: String, _ y: Int, _ targetY: Int, _ duration: Float) {
         let node = SKLabelNode(text: line)
         node.position = CGPoint(x: 0, y: y)
-        node.fontSize = 71
+        node.fontSize = 72
         node.fontName = "Helvetica Neue Thin"
         addChild(node)
 
