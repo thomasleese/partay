@@ -1,5 +1,4 @@
 from collections import namedtuple
-from datetime import timedelta
 
 import Foundation
 from AppKit import *
@@ -24,7 +23,7 @@ class GetSongsObserver(NSObject):
 
         if details['Player State'] == 'Playing':
             song  = Song(details['Name'], details['Artist'], details['Album'],
-                         timedelta(seconds=details['Total Time']))
+                         details['Total Time'])
             self.callback(song)
 
 

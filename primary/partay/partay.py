@@ -1,14 +1,18 @@
+import json
 from threading import Thread
 import time
 
 from . import hue, itunes, lyrics, music
+from .replica import Replica
 
 
 class Partay:
 
-    def __init__(self, api_key, hue_username):
+    def __init__(self, api_key, hue_username, replica_addresses):
         self.lyrics = lyrics.Lyrics(api_key)
         self.lights = hue.Hub.find(hue_username).lights
+
+        self.replicas = [Replica(a) for a in replica_addresses]
 
         self.triggering = False
 
@@ -21,7 +25,14 @@ class Partay:
 
     def on_song_change(self, song):
         lyrics = self.lyrics[song]
-        print(song, lyrics)
+
+        data = song._asdict()
+        data['lyrics'] = lyrics
+
+        payload = json.dumps(data).encode('utf-8')
+
+        for replica in self.replicas:
+            replica.send(payload)
 
     def on_beat(self, value):
         def thread(hue):

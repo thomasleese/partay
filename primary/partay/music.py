@@ -26,7 +26,7 @@ class MyMeter(soundmeter.meter.Meter):
         self.callback(rms)
 
 
-def listen(callback, threshold=350):
+def listen(callback, threshold=600):
     readings = np.array([])
 
     def my_callback(rms):
