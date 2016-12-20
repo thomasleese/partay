@@ -1,0 +1,1 @@
+from .partay import Partay
