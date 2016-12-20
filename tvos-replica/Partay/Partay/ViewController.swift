@@ -26,11 +26,15 @@ class ViewController: UIViewController {
                 print("Accepted connection from: \(newSocket.remoteHostname) on port \(newSocket.remotePort)")
 
                 do {
+                    sleep(1)
                     let json = try newSocket.readString()!
                     if let song = Song.fromString(s: json) {
                         DispatchQueue.main.async {
                             self.songChanged(song)
                         }
+                    } else {
+                        print("Could not parse JSON!")
+                        print(json)
                     }
                 } catch {
                     print("Cannot read!")
