@@ -24,7 +24,11 @@ class Partay:
         itunes.listen(self.on_song_change)
 
     def on_song_change(self, song):
+        print('Song change:', song)
+
         lyrics = self.lyrics[song]
+        if lyrics is None:
+            print('Unable to get lyrics!')
 
         data = song._asdict()
         data['lyrics'] = lyrics
