@@ -1,3 +1,5 @@
+cssselect==1.0.0
+lxml==3.7.0
 pyobjc==3.2.1
 pyobjc-core==3.2.1
 pyobjc-framework-Accounts==3.2.1
@@ -34,6 +36,7 @@ pyobjc-framework-IMServicePlugIn==3.2.1
 pyobjc-framework-InputMethodKit==3.2.1
 pyobjc-framework-InstallerPlugins==3.2.1
 pyobjc-framework-InstantMessage==3.2.1
+pyobjc-framework-Intents==3.2.1
 pyobjc-framework-IOSurface==3.2.1
 pyobjc-framework-LatentSemanticMapping==3.2.1
 pyobjc-framework-LaunchServices==3.2.1
@@ -41,6 +44,7 @@ pyobjc-framework-LocalAuthentication==3.2.1
 pyobjc-framework-MapKit==3.2.1
 pyobjc-framework-MediaAccessibility==3.2.1
 pyobjc-framework-MediaLibrary==3.2.1
+pyobjc-framework-MediaPlayer==3.2.1
 pyobjc-framework-ModelIO==3.2.1
 pyobjc-framework-MultipeerConnectivity==3.2.1
 pyobjc-framework-NetFS==3.2.1
