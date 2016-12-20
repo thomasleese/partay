@@ -4,4 +4,5 @@ from . import Partay
 
 
 api_key = sys.argv[1]
-Partay(api_key).run()
+hue_username = sys.argv[2]
+Partay(api_key, hue_username).run()
