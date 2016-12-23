@@ -32,7 +32,9 @@ class Lyrics:
 
         songs = [hit['result']
                  for hit in response['hits']
-                 if hit['type'] == 'song']
+                 if hit['type'] == 'song'
+                     and similar(hit['result']['full_title'],
+                                 query) > 0.33]
 
         songs = sorted(songs, reverse=True,
                        key=lambda x: similar(x['full_title'], query))
