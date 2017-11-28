@@ -9,6 +9,8 @@ import numpy
 def wrap_hue(value):
     while value >= 360:
         value -= 360
+    while value < 0:
+        value += 360
     return value
 
 
@@ -51,8 +53,8 @@ class ColourPicker:
     default_buffer_size = 48
 
     themes = [
-        rainbow(5), rainbow(10), rainbow(25), rainbow(50),
-        random_hue, random_hue, random_hue, random_hue, random_hue,
+        rainbow(30), rainbow(-30),
+        random_hue, random_hue, random_hue, random_hue,
         reds, reds, blues, blues, greens, greens,
     ]
 
