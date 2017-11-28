@@ -2,7 +2,7 @@ import json
 from threading import Thread
 import time
 
-from . import hue, itunes, lyrics, music
+from . import audio, hue, itunes, lyrics
 from .replica import Replica
 
 

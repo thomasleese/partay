@@ -149,10 +149,16 @@ class BeatDetector(Iterable):
                 yield instant_energy
 
 
-if __name__ == '__main__':
+def listen():
     sampler = Sampler()
     beat_detector = BeatDetector(sampler)
 
-    for beat in beat_detector:
+    yield from beat_detector
+
+    del sampler
+
+
+if __name__ == '__main__':
+    for beat in listen():
         bar = '#' * int(beat / 10)
         print(beat, bar)
