@@ -1,6 +1,6 @@
 import sys
 
-from . import Partay
+from .partay import Partay
 
 
 api_key = sys.argv[1]

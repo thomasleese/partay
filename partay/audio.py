@@ -149,16 +149,21 @@ class BeatDetector(Iterable):
                 yield instant_energy
 
 
-def listen():
+def listen(callback):
+    """Listen for beats and trigger the callback for each."""
+
     sampler = Sampler()
     beat_detector = BeatDetector(sampler)
 
-    yield from beat_detector
+    for beat in beat_detector:
+        callback(beat)
 
     del sampler
 
 
 if __name__ == '__main__':
-    for beat in listen():
+    def handler(beat):
         bar = '#' * int(beat / 10)
         print(beat, bar)
+
+    listen(handler)

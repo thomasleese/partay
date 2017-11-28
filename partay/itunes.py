@@ -1,3 +1,5 @@
+"""iTunes related classes and functions."""
+
 from collections import namedtuple
 
 import Foundation
@@ -8,7 +10,10 @@ from PyObjCTools import AppHelper
 
 Song = namedtuple('Song', ['title', 'artist', 'album', 'duration'])
 
+
 class GetSongsObserver(NSObject):
+    """An observer which handles song changes from iTunes."""
+
     def initWithCallback_(self, callback):
         self = objc.super(GetSongsObserver, self).init()
         if self is None:
@@ -28,9 +33,15 @@ class GetSongsObserver(NSObject):
 
 
 def listen(callback):
+    """Listen for song changes and trigger the callback for each."""
+
     nc = Foundation.NSDistributedNotificationCenter.defaultCenter()
     observer = GetSongsObserver.alloc().initWithCallback_(callback)
     nc.addObserver_selector_name_object_(observer, 'getMySongs:',
                                          'com.apple.iTunes.playerInfo', None)
 
     AppHelper.runConsoleEventLoop()
+
+
+if __name__ == '__main__':
+    listen(lambda song: print(song))
