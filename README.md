@@ -2,7 +2,7 @@
 
 Helping you host a great PARTAY!
 
-![](https://media.giphy.com/media/xUOxeY42XYR5tMUN7G/giphy.gif)
+![](https://media.giphy.com/media/xUOxeY42XYR5tMUN7G/200w_d.gif)
 
 By combining a number of different devices together with some software, it is
 possible to host party with high production value very easily. At the moment,
