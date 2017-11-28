@@ -2,7 +2,7 @@ import json
 from threading import Thread
 import time
 
-from . import audio, hue, itunes, lyrics
+from . import audio, colours, hue, itunes, lyrics
 from .replica import Replica
 
 
@@ -11,20 +11,27 @@ class Partay:
     def __init__(self, api_key, hue_username, replica_addresses):
         self.lyrics = lyrics.Lyrics(api_key)
         self.lights = hue.Hub.find(hue_username).lights
+        self.colour_picker = colours.ColourPicker()
 
         self.replicas = [Replica(a) for a in replica_addresses]
 
-        self.triggering = False
-
-    def run(self):
+    def turn_on_lights(self):
         for light in self.lights:
             light.trigger(on=True)
 
-        music.listen(self.on_beat)
+    def start_audio_thread(self):
+        Thread(target=audio.listen, args=(self.on_beat,), daemon=True).start()
+
+    def run(self):
+        self.turn_on_lights()
+        self.start_audio_thread()
+
         itunes.listen(self.on_song_change)
 
     def on_song_change(self, song):
         print('Song change:', song)
+
+        self.colour_picker.change_theme()
 
         lyrics = self.lyrics[song]
         if lyrics is None:
@@ -38,14 +45,15 @@ class Partay:
         for replica in self.replicas:
             replica.send(payload)
 
-    def on_beat(self, value):
-        def thread(hue):
-            for light in self.lights:
-                light.trigger(hue=hue, brightness=254, saturation=254)
+    def on_beat(self, energy):
+        print(energy)
 
-            self.triggering = False
+        hue, saturation, brightness = self.colour_picker.pick(energy)
 
-        if not self.triggering:
-            self.triggering = True
-            hue = int(value * 65535)
-            Thread(target=thread, args=(hue,)).start()
+        hue = round(hue * (65535 / 360))
+
+        kwargs = {'hue': hue, 'saturation': saturation, 'brightness': brightness}
+        print(kwargs)
+
+        for light in self.lights:
+            Thread(target=light.trigger, kwargs=kwargs).start()

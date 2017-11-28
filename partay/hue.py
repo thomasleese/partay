@@ -14,16 +14,16 @@ class Light(BaseLight):
         payload = {}
 
         if on is not None:
-            payload['on'] = on
+            payload['on'] = bool(on)
 
         if brightness is not None:
-            payload['bri'] = brightness
+            payload['bri'] = int(brightness)
 
         if hue is not None:
-            payload['hue'] = hue
+            payload['hue'] = int(hue)
 
         if saturation is not None:
-            payload['sat'] = saturation
+            payload['sat'] = int(saturation)
 
         url = self.api_url + '/lights/{}'.format(self.id) + '/state'
 

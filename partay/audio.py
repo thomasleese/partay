@@ -138,7 +138,9 @@ class BeatDetector(Iterable):
             if not self.can_process_sample:
                 continue
 
-            c = -0.000025714 * self.energy_variance + 1.5142857
+            #print(self.energy_variance)
+
+            c = -0.000000025714 * self.energy_variance + 1.5142857
 
             threshold = self.energy_average * c
 
