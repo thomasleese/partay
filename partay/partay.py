@@ -1,4 +1,5 @@
 import json
+import random
 from threading import Thread
 import time
 
@@ -20,7 +21,9 @@ class Partay:
             light.trigger(on=True)
 
     def start_audio_thread(self):
-        Thread(target=audio.listen, args=(self.on_beat,), daemon=True).start()
+        def handler(energy):
+            Thread(target=self.on_beat, args=(energy,)).start()
+        Thread(target=audio.listen, args=(handler,), daemon=True).start()
 
     def run(self):
         self.turn_on_lights()
@@ -46,8 +49,6 @@ class Partay:
             replica.send(payload)
 
     def on_beat(self, energy):
-        print(energy)
-
         hue, saturation, brightness = self.colour_picker.pick(energy)
 
         hue = round(hue * (65535 / 360))
@@ -55,5 +56,8 @@ class Partay:
         kwargs = {'hue': hue, 'saturation': saturation, 'brightness': brightness}
         print(kwargs)
 
-        for light in self.lights:
+        num_lights = random.randint(1, len(self.lights) - 1)
+        chosen_lights = random.sample(self.lights, num_lights)
+
+        for light in chosen_lights:
             Thread(target=light.trigger, kwargs=kwargs).start()
