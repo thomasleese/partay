@@ -26,10 +26,12 @@ machine, press play, and start the party.
 
 ## Detailed Instructions
 
-1. Install [Xcode](https://developer.apple.com/xcode/) and
-[Homebrew][http://brew.sh] on your target computer.
+1. Install [Xcode][xcode] and [Homebrew][homebrew] on your target computer.
 2. Clone this repository to a location on your computer.
-3. In the `primary` directory, run `pyvenv venv` and then `venv/bin/pip install -r requirements.txt`.
+3. Run `pipenv install` to install the application.
 4. Sign up for [Genius](https://genius.com) and get an API key.
 5. [Get an API key for your Phillips Hue lights](https://developers.meethue.com/documentation/getting-started).
-6. Run `venv/bin/python -m partay <GENIUS> <HUE>`
+6. Run `pipenv run python -m partay <GENIUS> <HUE>`
+
+[xcode]: https://developer.apple.com/xcode/
+[homebrew]: http://brew.sh
