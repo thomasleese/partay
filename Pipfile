@@ -10,8 +10,9 @@ name = "pypi"
 requests = "*"
 lxml = "*"
 pyobjc = "*"
-PyAudio = "*"
+pyaudio = "*"
 numpy = "*"
+pyyaml = "*"
 
 
 [dev-packages]

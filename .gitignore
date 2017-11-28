@@ -156,4 +156,6 @@ ENV/
 # Rope project settings
 .ropeproject
 
+# Partay files
 lyrics.db
+config.yaml

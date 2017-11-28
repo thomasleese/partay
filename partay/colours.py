@@ -38,7 +38,9 @@ class ColourPicker:
         self.theme = random.choice(self.themes)()
 
     def fit_value(self, minimum, maximum, minimum_value, maximum_value, value):
-        coefficients = numpy.polyfit((minimum, maximum), (minimum_value, maximum_value), 1)
+        coefficients = numpy.polyfit(
+            (minimum, maximum), (minimum_value, maximum_value), 1
+        )
 
         a = coefficients[0]
         b = coefficients[1]
