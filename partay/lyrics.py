@@ -1,8 +1,11 @@
+"""Lyrics related classes and functions."""
+
 from difflib import SequenceMatcher
 import sqlite3
 
 import lxml.html
 import requests
+import urllib.request
 
 
 class Lyrics:
@@ -28,10 +31,12 @@ class Lyrics:
         data = {'q': query}
         headers = {'Authorization': 'Bearer {}'.format(self.api_key)}
         response = requests.get('http://api.genius.com/search',
-                                data=data, headers=headers).json()['response']
+                                params=data, headers=headers)
+
+        response_data = response.json()['response']
 
         songs = [hit['result']
-                 for hit in response['hits']
+                 for hit in response_data['hits']
                  if hit['type'] == 'song'
                      and similar(hit['result']['full_title'],
                                  query) > 0.33]
@@ -89,9 +94,16 @@ class Lyrics:
             cursor.close()
             return row[0]
 
-        url = 'http://genius.com' + row[1]
+        url = 'https://genius.com' + row[1]
 
-        doc = lxml.html.parse(url).getroot()
+        request = urllib.request.Request(
+            url,
+            headers={
+                'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.47 Safari/537.36'
+            }
+        )
+
+        doc = lxml.html.parse(urllib.request.urlopen(request)).getroot()
         lyrics = doc.cssselect('.lyrics')[0].text_content().strip()
 
         lyrics = self.format_lyrics(lyrics)
@@ -109,3 +121,16 @@ class Lyrics:
             return None
 
         return self.get_lyrics(track_id)
+
+
+if __name__ == '__main__':
+    from .config import Config
+    from .itunes import listen
+
+    c = Config('config.yaml')
+    lyrics = Lyrics(c.genius_api_key)
+
+    def handler(song):
+        print(lyrics[song])
+
+    listen(handler)

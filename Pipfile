@@ -13,6 +13,7 @@ pyobjc = "*"
 pyaudio = "*"
 numpy = "*"
 pyyaml = "*"
+cssselect = "*"
 
 
 [dev-packages]
