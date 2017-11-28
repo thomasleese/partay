@@ -1,5 +1,6 @@
+"""Philips Hue related classes and functions."""
+
 from collections import namedtuple
-import time
 
 import requests
 
@@ -8,6 +9,7 @@ BaseLight = namedtuple('Light', ['api_url', 'id'])
 
 
 class Light(BaseLight):
+
     def trigger(self, on=None, brightness=None, hue=None, saturation=None):
         payload = {}
 
@@ -32,6 +34,7 @@ class Light(BaseLight):
 
 
 class Hub:
+
     def __init__(self, base_url):
         self.base_url = base_url
 
@@ -53,3 +56,17 @@ class Hub:
             lights.append(light)
 
         return sorted(lights, key=lambda l: l.id)
+
+
+if __name__ == '__main__':
+    import time
+
+    from .config import Config
+
+    c = Config('config.yaml')
+    hub = Hub.find(c.hue_username)
+
+    for light in hub.lights:
+        light.trigger(on=False)
+        time.sleep(1)
+        light.trigger(on=True)
