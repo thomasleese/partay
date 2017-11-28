@@ -2,6 +2,8 @@
 
 Helping you host a great PARTAY!
 
+![](https://media.giphy.com/media/xUOxeY42XYR5tMUN7G/giphy.gif)
+
 By combining a number of different devices together with some software, it is
 possible to host party with high production value very easily. At the moment,
 the software works with iTunes, tvOS and Phillips Hue; but it could easily be
@@ -31,7 +33,7 @@ machine, press play, and start the party.
 3. Run `pipenv install` to install the application.
 4. Sign up for [Genius](https://genius.com) and get an API key.
 5. [Get an API key for your Phillips Hue lights](https://developers.meethue.com/documentation/getting-started).
-6. Run `pipenv run python -m partay <GENIUS> <HUE>`
+6. Run `pipenv run python -m partay config.yaml [<replica_address> ...]`
 
 [xcode]: https://developer.apple.com/xcode/
 [homebrew]: http://brew.sh
