@@ -10,22 +10,93 @@
 		5DC5599B1FCDDCD3008228D0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC5599A1FCDDCD3008228D0 /* AppDelegate.swift */; };
 		5DC5599D1FCDDCD3008228D0 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 5DC5599C1FCDDCD3008228D0 /* GameScene.sks */; };
 		5DC5599F1FCDDCD3008228D0 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 5DC5599E1FCDDCD3008228D0 /* Actions.sks */; };
-		5DC559A11FCDDCD3008228D0 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC559A01FCDDCD3008228D0 /* GameScene.swift */; };
-		5DC559A31FCDDCD3008228D0 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC559A21FCDDCD3008228D0 /* GameViewController.swift */; };
 		5DC559A61FCDDCD3008228D0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DC559A41FCDDCD3008228D0 /* Main.storyboard */; };
 		5DC559A81FCDDCD3008228D0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5DC559A71FCDDCD3008228D0 /* Assets.xcassets */; };
+		5DDC27BC1FCDE031001ED4CA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DDC27B41FCDE030001ED4CA /* ViewController.swift */; };
+		5DDC27BD1FCDE031001ED4CA /* WelcomeScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 5DDC27B51FCDE030001ED4CA /* WelcomeScene.sks */; };
+		5DDC27BE1FCDE031001ED4CA /* WelcomeScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DDC27B61FCDE030001ED4CA /* WelcomeScene.swift */; };
+		5DDC27C01FCDE031001ED4CA /* SongScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 5DDC27B81FCDE031001ED4CA /* SongScene.sks */; };
+		5DDC27C11FCDE031001ED4CA /* SongScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DDC27B91FCDE031001ED4CA /* SongScene.swift */; };
+		5DDC27C31FCDE031001ED4CA /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DDC27BB1FCDE031001ED4CA /* Song.swift */; };
+		5DDC27DD1FCDE819001ED4CA /* Socket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DDC27D21FCDE68F001ED4CA /* Socket.framework */; };
+		5DDC27DE1FCDE819001ED4CA /* Socket.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5DDC27D21FCDE68F001ED4CA /* Socket.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5DDC27CD1FCDE68F001ED4CA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5DDC27C61FCDE68F001ED4CA /* BlueSocket.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8C0F4BF61C4E84CC008B2B0A;
+			remoteInfo = Socket;
+		};
+		5DDC27CF1FCDE68F001ED4CA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5DDC27C61FCDE68F001ED4CA /* BlueSocket.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8CC36E021C4EA1BE00BAA659;
+			remoteInfo = "Socket-iOS";
+		};
+		5DDC27D11FCDE68F001ED4CA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5DDC27C61FCDE68F001ED4CA /* BlueSocket.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8C5FEE9B1FC319F7002F4CAA;
+			remoteInfo = "Socket-tvOS";
+		};
+		5DDC27D31FCDE68F001ED4CA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5DDC27C61FCDE68F001ED4CA /* BlueSocket.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8CA9B1631C98A00400E607FB;
+			remoteInfo = SocketTests;
+		};
+		5DDC27DA1FCDE7CF001ED4CA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5DDC27C61FCDE68F001ED4CA /* BlueSocket.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 8C5FEE8F1FC319F7002F4CAA;
+			remoteInfo = "Socket-tvOS";
+		};
+		5DDC27DF1FCDE819001ED4CA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5DDC27C61FCDE68F001ED4CA /* BlueSocket.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 8C5FEE8F1FC319F7002F4CAA;
+			remoteInfo = "Socket-tvOS";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		5DDC27E11FCDE81A001ED4CA /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				5DDC27DE1FCDE819001ED4CA /* Socket.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		5DC559971FCDDCD3008228D0 /* Partay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Partay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DC5599A1FCDDCD3008228D0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5DC5599C1FCDDCD3008228D0 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		5DC5599E1FCDDCD3008228D0 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
-		5DC559A01FCDDCD3008228D0 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
-		5DC559A21FCDDCD3008228D0 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		5DC559A51FCDDCD3008228D0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5DC559A71FCDDCD3008228D0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5DC559A91FCDDCD3008228D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5DDC27B31FCDE030001ED4CA /* Partay-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Partay-Bridging-Header.h"; sourceTree = "<group>"; };
+		5DDC27B41FCDE030001ED4CA /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		5DDC27B51FCDE030001ED4CA /* WelcomeScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = WelcomeScene.sks; sourceTree = "<group>"; };
+		5DDC27B61FCDE030001ED4CA /* WelcomeScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeScene.swift; sourceTree = "<group>"; };
+		5DDC27B81FCDE031001ED4CA /* SongScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SongScene.sks; sourceTree = "<group>"; };
+		5DDC27B91FCDE031001ED4CA /* SongScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongScene.swift; sourceTree = "<group>"; };
+		5DDC27BB1FCDE031001ED4CA /* Song.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
+		5DDC27C61FCDE68F001ED4CA /* BlueSocket.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BlueSocket.xcodeproj; path = BlueSocket/BlueSocket.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +104,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5DDC27DD1FCDE819001ED4CA /* Socket.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,8 +114,10 @@
 		5DC5598E1FCDDCD3008228D0 = {
 			isa = PBXGroup;
 			children = (
+				5DDC27C61FCDE68F001ED4CA /* BlueSocket.xcodeproj */,
 				5DC559991FCDDCD3008228D0 /* Partay */,
 				5DC559981FCDDCD3008228D0 /* Products */,
+				5DDC27AF1FCDDF4F001ED4CA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,16 +132,39 @@
 		5DC559991FCDDCD3008228D0 /* Partay */ = {
 			isa = PBXGroup;
 			children = (
+				5DDC27B31FCDE030001ED4CA /* Partay-Bridging-Header.h */,
+				5DDC27BB1FCDE031001ED4CA /* Song.swift */,
+				5DDC27B81FCDE031001ED4CA /* SongScene.sks */,
+				5DDC27B91FCDE031001ED4CA /* SongScene.swift */,
+				5DDC27B41FCDE030001ED4CA /* ViewController.swift */,
+				5DDC27B51FCDE030001ED4CA /* WelcomeScene.sks */,
+				5DDC27B61FCDE030001ED4CA /* WelcomeScene.swift */,
 				5DC5599A1FCDDCD3008228D0 /* AppDelegate.swift */,
 				5DC5599C1FCDDCD3008228D0 /* GameScene.sks */,
 				5DC5599E1FCDDCD3008228D0 /* Actions.sks */,
-				5DC559A01FCDDCD3008228D0 /* GameScene.swift */,
-				5DC559A21FCDDCD3008228D0 /* GameViewController.swift */,
 				5DC559A41FCDDCD3008228D0 /* Main.storyboard */,
 				5DC559A71FCDDCD3008228D0 /* Assets.xcassets */,
 				5DC559A91FCDDCD3008228D0 /* Info.plist */,
 			);
 			path = Partay;
+			sourceTree = "<group>";
+		};
+		5DDC27AF1FCDDF4F001ED4CA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5DDC27C71FCDE68F001ED4CA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5DDC27CE1FCDE68F001ED4CA /* Socket.framework */,
+				5DDC27D01FCDE68F001ED4CA /* Socket.framework */,
+				5DDC27D21FCDE68F001ED4CA /* Socket.framework */,
+				5DDC27D41FCDE68F001ED4CA /* SocketTests.xctest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -80,10 +177,13 @@
 				5DC559931FCDDCD3008228D0 /* Sources */,
 				5DC559941FCDDCD3008228D0 /* Frameworks */,
 				5DC559951FCDDCD3008228D0 /* Resources */,
+				5DDC27E11FCDE81A001ED4CA /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				5DDC27DB1FCDE7CF001ED4CA /* PBXTargetDependency */,
+				5DDC27E01FCDE819001ED4CA /* PBXTargetDependency */,
 			);
 			name = Partay;
 			productName = Partay;
@@ -117,6 +217,12 @@
 			mainGroup = 5DC5598E1FCDDCD3008228D0;
 			productRefGroup = 5DC559981FCDDCD3008228D0 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 5DDC27C71FCDE68F001ED4CA /* Products */;
+					ProjectRef = 5DDC27C61FCDE68F001ED4CA /* BlueSocket.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				5DC559961FCDDCD3008228D0 /* Partay */,
@@ -124,15 +230,48 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXReferenceProxy section */
+		5DDC27CE1FCDE68F001ED4CA /* Socket.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Socket.framework;
+			remoteRef = 5DDC27CD1FCDE68F001ED4CA /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		5DDC27D01FCDE68F001ED4CA /* Socket.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Socket.framework;
+			remoteRef = 5DDC27CF1FCDE68F001ED4CA /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		5DDC27D21FCDE68F001ED4CA /* Socket.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Socket.framework;
+			remoteRef = 5DDC27D11FCDE68F001ED4CA /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		5DDC27D41FCDE68F001ED4CA /* SocketTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = SocketTests.xctest;
+			remoteRef = 5DDC27D31FCDE68F001ED4CA /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
 /* Begin PBXResourcesBuildPhase section */
 		5DC559951FCDDCD3008228D0 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5DDC27BD1FCDE031001ED4CA /* WelcomeScene.sks in Resources */,
 				5DC559A61FCDDCD3008228D0 /* Main.storyboard in Resources */,
 				5DC5599D1FCDDCD3008228D0 /* GameScene.sks in Resources */,
 				5DC559A81FCDDCD3008228D0 /* Assets.xcassets in Resources */,
 				5DC5599F1FCDDCD3008228D0 /* Actions.sks in Resources */,
+				5DDC27C01FCDE031001ED4CA /* SongScene.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -143,13 +282,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5DC559A11FCDDCD3008228D0 /* GameScene.swift in Sources */,
-				5DC559A31FCDDCD3008228D0 /* GameViewController.swift in Sources */,
+				5DDC27C31FCDE031001ED4CA /* Song.swift in Sources */,
+				5DDC27C11FCDE031001ED4CA /* SongScene.swift in Sources */,
+				5DDC27BE1FCDE031001ED4CA /* WelcomeScene.swift in Sources */,
+				5DDC27BC1FCDE031001ED4CA /* ViewController.swift in Sources */,
 				5DC5599B1FCDDCD3008228D0 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5DDC27DB1FCDE7CF001ED4CA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Socket-tvOS";
+			targetProxy = 5DDC27DA1FCDE7CF001ED4CA /* PBXContainerItemProxy */;
+		};
+		5DDC27E01FCDE819001ED4CA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Socket-tvOS";
+			targetProxy = 5DDC27DF1FCDE819001ED4CA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		5DC559A41FCDDCD3008228D0 /* Main.storyboard */ = {
@@ -271,32 +425,46 @@
 		5DC559AD1FCDDCD3008228D0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = R6UQ555W54;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				INFOPLIST_FILE = Partay/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = thomasleese.Partay;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 11.1;
 			};
 			name = Debug;
 		};
 		5DC559AE1FCDDCD3008228D0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = R6UQ555W54;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				INFOPLIST_FILE = Partay/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = thomasleese.Partay;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 11.1;
 			};
 			name = Release;
 		};

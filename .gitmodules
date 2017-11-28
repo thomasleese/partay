@@ -1,0 +1,6 @@
+[submodule "tvos-replica/Partay/Carthage"]
+	path = tvos-replica/Partay/Carthage
+	url = https://github.com/Carthage/Carthage.git
+[submodule "BlueSocket"]
+	path = tvos-replica/Partay/BlueSocket
+	url = https://github.com/IBM-Swift/BlueSocket.git
