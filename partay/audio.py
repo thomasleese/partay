@@ -69,6 +69,7 @@ class Sampler(Iterable):
 
     def __iter__(self):
         while self.stream.is_active():
+            #print(self.stream.get_read_available(), self.stream.get_input_latency())
             yield self.stream.read(self.frames_per_buffer)
 
 

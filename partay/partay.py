@@ -21,9 +21,9 @@ class Partay:
             light.trigger(on=True)
 
     def start_audio_thread(self):
-        def handler(energy):
-            Thread(target=self.on_beat, args=(energy,)).start()
-        Thread(target=audio.listen, args=(handler,), daemon=True).start()
+        #def handler(energy):
+        #    Thread(target=self.on_beat, args=(energy,)).start()
+        Thread(target=audio.listen, args=(self.on_beat,), daemon=True).start()
 
     def run(self):
         self.turn_on_lights()
