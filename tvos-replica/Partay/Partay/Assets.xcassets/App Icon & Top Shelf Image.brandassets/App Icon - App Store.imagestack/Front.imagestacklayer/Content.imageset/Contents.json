@@ -1,9 +1,7 @@
 {
   "images" : [
     {
-      "idiom" : "tv",
-      "filename" : "top.png",
-      "scale" : "1x"
+      "idiom" : "tv"
     }
   ],
   "info" : {
