@@ -3,11 +3,15 @@
 import audioop
 from collections import deque
 from collections.abc import Iterable
+import logging
 import math
 import time
 
 import numpy
 import pyaudio
+
+
+logger = logging.getLogger(__name__)
 
 
 class Sampler(Iterable):
@@ -69,7 +73,11 @@ class Sampler(Iterable):
 
     def __iter__(self):
         while self.stream.is_active():
-            #print(self.stream.get_read_available(), self.stream.get_input_latency())
+            frames_to_skip = self.stream.get_read_available()
+            if frames_to_skip > 0:
+                logger.warning(f'Warning: skipped {frames_to_skip} frames.')
+                self.stream.read(frames_to_skip)
+
             yield self.stream.read(self.frames_per_buffer)
 
 
@@ -119,7 +127,7 @@ class BeatDetector(Iterable):
     @property
     def can_process_sample(self):
         if len(self.buffer) != self.buffer.maxlen:
-            print(f'Waiting for buffer to fill... {len(self.buffer)}/{self.buffer.maxlen}')
+            logger.debug(f'Waiting for buffer to fill... {len(self.buffer)}/{self.buffer.maxlen}')
             return False
 
         if self.last_beat_time is not None:
@@ -139,13 +147,11 @@ class BeatDetector(Iterable):
             if not self.can_process_sample:
                 continue
 
-            #print(self.energy_variance)
-
             c = -0.000000025714 * self.energy_variance + 1.5142857
 
             threshold = self.energy_average * c
 
-            #print(threshold, instant_energy)
+            logger.debug('f{threshold} f{instant_energy}')
 
             if instant_energy > threshold:
                 self.last_beat_time = time.time()
