@@ -23,7 +23,7 @@ class Sampler(Iterable):
     default_rate = 44100
     default_width = 2
     default_channels = 2
-    default_frames_per_buffer = 1024
+    default_frames_per_buffer = 512
 
     def __init__(self,
                  rate: int = default_rate,
@@ -88,7 +88,7 @@ class BeatDetector(Iterable):
     """
 
     default_window = 64
-    default_cut_off_frequency = 80
+    default_cut_off_frequency = 40
     default_delay = 0.5
 
     def __init__(self,
