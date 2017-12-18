@@ -10,7 +10,7 @@ BaseLight = namedtuple('Light', ['api_url', 'id'])
 
 class Light(BaseLight):
 
-    def trigger(self, on=None, brightness=None, hue=None, saturation=None, transitiontime=None):
+    def trigger(self, on=None, brightness=None, hue=None, saturation=None, transitiontime=None, alert=None):
         payload = {}
 
         if on is not None:
@@ -27,6 +27,9 @@ class Light(BaseLight):
 
         if transitiontime is not None:
             payload['transitiontime'] = int(transitiontime)
+
+        if alert is not None:
+            payload['alert'] = 'select'
 
         url = self.api_url + '/lights/{}'.format(self.id) + '/state'
 

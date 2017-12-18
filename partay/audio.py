@@ -23,7 +23,7 @@ class Sampler(Iterable):
     default_rate = 44100
     default_width = 2
     default_channels = 2
-    default_frames_per_buffer = 512
+    default_frames_per_buffer = 2048
 
     def __init__(self,
                  rate: int = default_rate,
@@ -33,21 +33,23 @@ class Sampler(Iterable):
         self.pyaudio = pyaudio.PyAudio()
 
         self.rate = rate
-        self.channels = channels
         self.width = width
-
-        format = self.pyaudio.get_format_from_width(width)
-
-        self.stream = self.pyaudio.open(
-            format=format, channels=channels, rate=rate, input=True,
-            output=False, frames_per_buffer=frames_per_buffer
-        )
-
+        self.channels = channels
         self.frames_per_buffer = frames_per_buffer
+
+        self.open_stream()
 
     def __del__(self):
         self.stream.stop_stream()
         self.stream.close()
+
+    def open_stream(self):
+        format = self.pyaudio.get_format_from_width(self.width)
+
+        self.stream = self.pyaudio.open(
+            format=format, channels=self.channels, rate=self.rate, input=True,
+            output=False, frames_per_buffer=self.frames_per_buffer
+        )
 
     def interpret_channels(self, sample_data, interleaved=True):
         if self.width == 1:
@@ -78,7 +80,13 @@ class Sampler(Iterable):
                 logger.warning(f'Warning: skipped {frames_to_skip} frames.')
                 self.stream.read(frames_to_skip)
 
-            yield self.stream.read(self.frames_per_buffer)
+            try:
+                data = self.stream.read(self.frames_per_buffer)
+            except OSError:
+                logger.warning('Re-opened stream')
+                self.open_stream()
+            else:
+                yield data
 
 
 class BeatDetector(Iterable):
@@ -88,7 +96,7 @@ class BeatDetector(Iterable):
     """
 
     default_window = 64
-    default_cut_off_frequency = 40
+    default_cut_off_frequency = 35
     default_delay = 0.5
 
     def __init__(self,

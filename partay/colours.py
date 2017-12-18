@@ -87,8 +87,8 @@ class ColourPicker:
         minimum = min(self.buffer)
         maximum = max(self.buffer)
 
-        saturation = self.clamp_byte(round(self.fit_value(minimum, maximum, 120, 200, energy)))
-        brightness = self.clamp_byte(round(self.fit_value(minimum, maximum, 30, 180, energy)))
+        saturation = self.clamp_byte(round(self.fit_value(minimum, maximum, 220, 255, energy)))
+        brightness = self.clamp_byte(round(self.fit_value(minimum, maximum, 150, 220, energy)))
 
         return hue, saturation, brightness
 

@@ -18,18 +18,18 @@ class Partay:
 
     def turn_on_lights(self):
         for light in self.lights:
-            light.trigger(on=True)
+            light.trigger(on=True, brightness=0, saturation=0, hue=0)
 
     def start_audio_thread(self):
-        #def handler(energy):
-        #    Thread(target=self.on_beat, args=(energy,)).start()
         Thread(target=audio.listen, args=(self.on_beat,), daemon=True).start()
+
+    def start_itunes_thread(self):
+        itunes.listen(self.on_song_change)
 
     def run(self):
         self.turn_on_lights()
         self.start_audio_thread()
-
-        itunes.listen(self.on_song_change)
+        self.start_itunes_thread()
 
     def on_song_change(self, song):
         print('Song change:', song)
@@ -53,11 +53,8 @@ class Partay:
 
         hue = round(hue * (65535 / 360))
 
-        kwargs = {'hue': hue, 'saturation': saturation, 'brightness': brightness, 'transitiontime': 1}
+        kwargs = {'hue': hue, 'saturation': saturation, 'brightness': brightness, 'transitiontime': 2}
         print(kwargs)
 
-        num_lights = random.randint(1, len(self.lights) - 1)
-        chosen_lights = random.sample(self.lights, num_lights)
-
-        for light in chosen_lights:
+        for light in self.lights:
             Thread(target=light.trigger, kwargs=kwargs).start()
