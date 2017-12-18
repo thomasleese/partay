@@ -96,7 +96,7 @@ class BeatDetector(Iterable):
     """
 
     default_window = 64
-    default_cut_off_frequency = 35
+    default_cut_off_frequency = 32
     default_delay = 0.5
 
     def __init__(self,

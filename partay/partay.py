@@ -56,5 +56,10 @@ class Partay:
         kwargs = {'hue': hue, 'saturation': saturation, 'brightness': brightness, 'transitiontime': 2}
         print(kwargs)
 
-        for light in self.lights:
-            Thread(target=light.trigger, kwargs=kwargs).start()
+        threads = [
+            Thread(target=light.trigger, kwargs=kwargs)
+            for light in self.lights
+        ]
+
+        for thread in threads:
+            thread.start()
