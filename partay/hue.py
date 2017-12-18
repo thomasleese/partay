@@ -9,7 +9,7 @@ BaseLight = namedtuple('Light', ['api_url', 'id'])
 BaseGroup = namedtuple('Group', ['api_url', 'name', 'id'])
 
 
-def build_hue_payload(on=None, brightness=None, hue=None, saturation=None):
+def build_hue_payload(on=None, brightness=None, hue=None, saturation=None, alert=None, transitiontime=None):
     payload = {}
 
     if on is not None:
@@ -23,6 +23,12 @@ def build_hue_payload(on=None, brightness=None, hue=None, saturation=None):
 
     if saturation is not None:
         payload['sat'] = int(saturation)
+
+    if alert is not None:
+        payload['alert'] = alert
+
+    if transitiontime is not None:
+        payload['transitiontime'] = int(transitiontime)
 
     return payload
 
@@ -42,8 +48,8 @@ class Light(BaseLight):
 
 class Group(BaseGroup):
 
-    def trigger(self, on=None, brightness=None, hue=None, saturation=None):
-        payload = build_hue_payload(on, brightness, hue, saturation)
+    def trigger(self, on=None, brightness=None, hue=None, saturation=None, alert=None, transitiontime=None):
+        payload = build_hue_payload(on, brightness, hue, saturation, alert, transitiontime)
 
         url = self.api_url + '/groups/{}/action'.format(self.id)
 

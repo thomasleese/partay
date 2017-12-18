@@ -53,7 +53,7 @@ class Partay:
 
         hue = round(hue * (65535 / 360))
 
-        kwargs = {'hue': hue, 'saturation': saturation, 'brightness': brightness}
+        kwargs = {'hue': hue, 'saturation': saturation, 'brightness': brightness, 'transitiontime': 1}
         print(kwargs)
 
         Thread(target=self.hue_group.trigger, kwargs=kwargs).start()
