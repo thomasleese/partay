@@ -19,6 +19,10 @@ class Config(UserDict):
     def hue_username(self):
         return self['hue']['username']
 
+    @property
+    def hue_group(self):
+        return self['hue']['group']
+
 
 if __name__ == '__main__':
     print(Config('config.yaml'))

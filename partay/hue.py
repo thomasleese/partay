@@ -6,26 +6,46 @@ import requests
 
 
 BaseLight = namedtuple('Light', ['api_url', 'id'])
+BaseGroup = namedtuple('Group', ['api_url', 'name', 'id'])
+
+
+def build_hue_payload(on=None, brightness=None, hue=None, saturation=None):
+    payload = {}
+
+    if on is not None:
+        payload['on'] = bool(on)
+
+    if brightness is not None:
+        payload['bri'] = int(brightness)
+
+    if hue is not None:
+        payload['hue'] = int(hue)
+
+    if saturation is not None:
+        payload['sat'] = int(saturation)
+
+    return payload
 
 
 class Light(BaseLight):
 
     def trigger(self, on=None, brightness=None, hue=None, saturation=None):
-        payload = {}
+        payload = build_hue_payload(on, brightness, hue, saturation)
 
-        if on is not None:
-            payload['on'] = bool(on)
+        url = self.api_url + '/lights/{}/state'.format(self.id)
 
-        if brightness is not None:
-            payload['bri'] = int(brightness)
+        try:
+            res = requests.put(url, json=payload)
+        except requests.exceptions.ConnectionError:
+            pass
 
-        if hue is not None:
-            payload['hue'] = int(hue)
 
-        if saturation is not None:
-            payload['sat'] = int(saturation)
+class Group(BaseGroup):
 
-        url = self.api_url + '/lights/{}'.format(self.id) + '/state'
+    def trigger(self, on=None, brightness=None, hue=None, saturation=None):
+        payload = build_hue_payload(on, brightness, hue, saturation)
+
+        url = self.api_url + '/groups/{}/action'.format(self.id)
 
         try:
             res = requests.put(url, json=payload)
@@ -57,6 +77,23 @@ class Hub:
 
         return sorted(lights, key=lambda l: l.id)
 
+    @property
+    def groups(self):
+        groups = []
+
+        res = requests.get(self.base_url + '/groups')
+        json = res.json()
+        for key, item in json.items():
+            group = Group(self.base_url, item['name'], int(key))
+            groups.append(group)
+
+        return sorted(groups, key=lambda l: l.id)
+
+    def find_group(self, name):
+        for group in self.groups:
+            if group.name == name:
+                return group
+
 
 if __name__ == '__main__':
     import time
@@ -66,7 +103,8 @@ if __name__ == '__main__':
     c = Config('config.yaml')
     hub = Hub.find(c.hue_username)
 
-    for light in hub.lights:
-        light.trigger(on=False)
+    for group in hub.groups:
+        print(group)
+        group.trigger(on=False)
         time.sleep(1)
-        light.trigger(on=True)
+        group.trigger(on=True)

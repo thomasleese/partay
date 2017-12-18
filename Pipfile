@@ -10,9 +10,9 @@ name = "pypi"
 requests = "*"
 lxml = "*"
 pyobjc = "*"
-pyaudio = "*"
+PyAudio = "*"
 numpy = "*"
-pyyaml = "*"
+PyYAML = "*"
 cssselect = "*"
 
 
