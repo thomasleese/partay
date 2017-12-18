@@ -6,52 +6,29 @@ import requests
 
 
 BaseLight = namedtuple('Light', ['api_url', 'id'])
-BaseGroup = namedtuple('Group', ['api_url', 'name', 'id'])
-
-
-def build_hue_payload(on=None, brightness=None, hue=None, saturation=None, alert=None, transitiontime=None):
-    payload = {}
-
-    if on is not None:
-        payload['on'] = bool(on)
-
-    if brightness is not None:
-        payload['bri'] = int(brightness)
-
-    if hue is not None:
-        payload['hue'] = int(hue)
-
-    if saturation is not None:
-        payload['sat'] = int(saturation)
-
-    if alert is not None:
-        payload['alert'] = alert
-
-    if transitiontime is not None:
-        payload['transitiontime'] = int(transitiontime)
-
-    return payload
 
 
 class Light(BaseLight):
 
-    def trigger(self, on=None, brightness=None, hue=None, saturation=None):
-        payload = build_hue_payload(on, brightness, hue, saturation)
+    def trigger(self, on=None, brightness=None, hue=None, saturation=None, transitiontime=None):
+        payload = {}
 
-        url = self.api_url + '/lights/{}/state'.format(self.id)
+        if on is not None:
+            payload['on'] = bool(on)
 
-        try:
-            res = requests.put(url, json=payload)
-        except requests.exceptions.ConnectionError:
-            pass
+        if brightness is not None:
+            payload['bri'] = int(brightness)
 
+        if hue is not None:
+            payload['hue'] = int(hue)
 
-class Group(BaseGroup):
+        if saturation is not None:
+            payload['sat'] = int(saturation)
 
-    def trigger(self, on=None, brightness=None, hue=None, saturation=None, alert=None, transitiontime=None):
-        payload = build_hue_payload(on, brightness, hue, saturation, alert, transitiontime)
+        if transitiontime is not None:
+            payload['transitiontime'] = int(transitiontime)
 
-        url = self.api_url + '/groups/{}/action'.format(self.id)
+        url = self.api_url + '/lights/{}'.format(self.id) + '/state'
 
         try:
             res = requests.put(url, json=payload)
@@ -83,23 +60,6 @@ class Hub:
 
         return sorted(lights, key=lambda l: l.id)
 
-    @property
-    def groups(self):
-        groups = []
-
-        res = requests.get(self.base_url + '/groups')
-        json = res.json()
-        for key, item in json.items():
-            group = Group(self.base_url, item['name'], int(key))
-            groups.append(group)
-
-        return sorted(groups, key=lambda l: l.id)
-
-    def find_group(self, name):
-        for group in self.groups:
-            if group.name == name:
-                return group
-
 
 if __name__ == '__main__':
     import time
@@ -109,8 +69,7 @@ if __name__ == '__main__':
     c = Config('config.yaml')
     hub = Hub.find(c.hue_username)
 
-    for group in hub.groups:
-        print(group)
-        group.trigger(on=False)
+    for light in hub.lights:
+        light.trigger(on=False)
         time.sleep(1)
-        group.trigger(on=True)
+        light.trigger(on=True)

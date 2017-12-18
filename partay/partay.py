@@ -9,16 +9,16 @@ from .replica import Replica
 
 class Partay:
 
-    def __init__(self, api_key, hue_username, hue_group, replica_addresses):
+    def __init__(self, api_key, hue_username, replica_addresses):
         self.lyrics = lyrics.Lyrics(api_key)
-        self.hub = hue.Hub.find(hue_username)
-        self.hue_group = self.hub.find_group(hue_group)
+        self.lights = hue.Hub.find(hue_username).lights
         self.colour_picker = colours.ColourPicker()
 
         self.replicas = [Replica(a) for a in replica_addresses]
 
     def turn_on_lights(self):
-        self.hue_group.trigger(on=True)
+        for light in self.lights:
+            light.trigger(on=True)
 
     def start_audio_thread(self):
         #def handler(energy):
@@ -56,4 +56,8 @@ class Partay:
         kwargs = {'hue': hue, 'saturation': saturation, 'brightness': brightness, 'transitiontime': 1}
         print(kwargs)
 
-        Thread(target=self.hue_group.trigger, kwargs=kwargs).start()
+        num_lights = random.randint(1, len(self.lights) - 1)
+        chosen_lights = random.sample(self.lights, num_lights)
+
+        for light in chosen_lights:
+            Thread(target=light.trigger, kwargs=kwargs).start()
