@@ -19,6 +19,10 @@ class Config(UserDict):
     def hue_username(self):
         return self['hue']['username']
 
+    @property
+    def lights_brightness(self):
+        return self['lights']['brightness']
+
 
 if __name__ == '__main__':
     print(Config('config.yaml'))

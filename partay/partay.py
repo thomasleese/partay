@@ -9,10 +9,11 @@ from .replica import Replica
 
 class Partay:
 
-    def __init__(self, api_key, hue_username, replica_addresses):
+    def __init__(self, api_key, hue_username, replica_addresses, lights_brightness):
         self.lyrics = lyrics.Lyrics(api_key)
         self.lights = hue.Hub.find(hue_username).lights
         self.colour_picker = colours.ColourPicker()
+        self.lights_brightness = lights_brightness
 
         self.replicas = [Replica(a) for a in replica_addresses]
 
@@ -53,7 +54,7 @@ class Partay:
 
         hue = round(hue * (65535 / 360))
 
-        kwargs = {'hue': hue, 'saturation': saturation, 'brightness': brightness, 'transitiontime': 2}
+        kwargs = {'hue': hue, 'saturation': saturation, 'brightness': brightness * self.lights_brightness, 'transitiontime': 2}
         print(kwargs)
 
         threads = [
